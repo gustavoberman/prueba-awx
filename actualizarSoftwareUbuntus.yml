@@ -1,0 +1,20 @@
+---
+- hosts: escritorio
+#  serial: 1
+  become: True
+#  gather_facts: false
+
+  tasks:
+
+  - name: update
+    apt: update_cache=yes
+
+  - name: hacer espacio con autoremove
+    apt: autoremove=yes
+
+  - name: actualizar distro
+    apt: upgrade=dist
+    async: 7200
+    poll: 30
+
+
